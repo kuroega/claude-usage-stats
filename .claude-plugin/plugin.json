@@ -1,0 +1,6 @@
+{
+  "name": "usage-stats",
+  "version": "0.1.0",
+  "description": "A pane with your Claude Code usage: active days, streaks, token counts and a contribution grid.",
+  "types": "./types/index.d.ts"
+}
