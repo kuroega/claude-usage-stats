@@ -33,3 +33,7 @@ Nothing leaves your machine: the mod reads local files and draws the pane, and m
 - **Streak** is the run of consecutive days with activity, ending today (or yesterday, before today's first message).
 
 Requires macOS or another system with `/usr/bin/awk`.
+
+## License
+
+[MIT](LICENSE)
