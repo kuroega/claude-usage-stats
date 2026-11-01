@@ -98,15 +98,44 @@ export const register: Register = on => {
     const stats = rangeStats(data.days, selected, today)
     const funFact = bookComparison(stats.tokens, today)
 
+    const isTerminal = e.surface === 'terminal'
     const tabs = (
       <Box flexDirection="row" justifyContent="flex-end" gap={1}>
-        {RANGES.map(r => (
-          <Button key={`range-${r.id}`} plain onPress={() => void update($, range, () => r.id)}>
-            <Text size="footnote" dimColor={r.id !== selected} weight={r.id === selected ? 'semibold' : 'regular'}>
+        {RANGES.map(r => {
+          const isSelected = r.id === selected
+          const label = (
+            <Text size="footnote" dimColor={!isSelected} weight={isSelected ? 'semibold' : 'regular'}>
               {r.label}
             </Text>
-          </Button>
-        ))}
+          )
+          const onPress = () => void update($, range, () => r.id)
+          // The terminal sets the selected range on a filled chip, lighting the
+          // others on hover. A desktop draws its own rounded buttons, so there the
+          // selected range is a native button and the others plain.
+          if (!isTerminal) {
+            return isSelected ? (
+              <Button key={`range-${r.id}`} variant="secondary" onPress={onPress}>
+                {label}
+              </Button>
+            ) : (
+              <Button key={`range-${r.id}`} plain onPress={onPress}>
+                {label}
+              </Button>
+            )
+          }
+          return (
+            <Box
+              key={`tab-${r.id}`}
+              paddingX={1}
+              backgroundColor={isSelected ? 'subtle' : undefined}
+              hover={isSelected ? undefined : { backgroundColor: 'subtle' }}
+            >
+              <Button key={`range-${r.id}`} plain onPress={onPress}>
+                {label}
+              </Button>
+            </Box>
+          )
+        })}
       </Box>
     )
 
