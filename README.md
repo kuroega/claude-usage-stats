@@ -2,6 +2,8 @@
 
 A Claude Code mod that shows your usage in a pane beside the chat: total tokens with a daily trend, active days, your current and best streak, peak hour, favorite model, and a contribution grid of the last 26 weeks. Switch between all time, the last 30 days and the last 7 days.
 
+<img src="assets/pane.png" alt="The usage-stats pane: all-time total tokens with a daily trend, active days, streak, peak hour, favorite model and an activity grid" width="363">
+
 In the Claude desktop app the pane opens on its own when a session starts. In a terminal, run `/usage-stats` to open it.
 
 ## Install
